@@ -29,7 +29,7 @@ class Tuto
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="images")
      *
      * @var ?File
      */
@@ -172,9 +172,9 @@ class Tuto
 //    /**
 //     * @param File $posterFile
 //     */
-//    public function setPosterFile(File $image = null): Tuto
+//    public function setPosterFile(File $images = null): Tuto
 //    {
-//        $this->posterFile = $image;
+//        $this->posterFile = $images;
 //        return $this;
 //    }
 
