@@ -5,13 +5,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <li class="d-flex justify-content-center navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path("home") }}">Home</a>
                 </li>
-                    {{ render(controller(
-                        'App\\Controller\\CategoryController::navbarCategory'
-                    )) }}
+
+
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path("home") }}">Atelier</a>
                 </li>
@@ -19,5 +18,8 @@
         </div>
     </div>
 </nav>
-{{ dump() }}
+{#                    {{ render(controller(#}
+{#                        'App\\Controller\\CategoryController::navbarCategory'#}
+{#                    )) }}#}
+
 

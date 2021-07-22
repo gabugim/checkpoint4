@@ -22,8 +22,8 @@
                 <tr>
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
-                    <td>{{ category.shortDescription }}</td>
-                    <td>{{ category.longDescription }}</td>
+                    <td  >{{ category.shortDescription }}</td>
+                    <td >{{ category.longDescription }}</td>
                     <td>{{ category.title }}</td>
                     <td>{{ category.image }}</td>
                     <td>
@@ -78,6 +78,52 @@
     </table>
 
     <a href="{{ path('tuto_admin_new') }}">Create new</a>
-<p>ooooo</p>
-    <p>aaaaaaaaaa</p>
+
+    <h1>Devis index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>TypeDeBien</th>
+            <th>Budget</th>
+            <th>Surface</th>
+            <th>Description</th>
+            <th>Mail</th>
+            <th>Telephone</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>CodePostal</th>
+            <th>Ville</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for devi in devis %}
+            <tr>
+                <td>{{ devi.id }}</td>
+                <td>{{ devi.typeDeBien }}</td>
+                <td>{{ devi.budget }}</td>
+                <td>{{ devi.surface }}</td>
+                <td>{{ devi.description }}</td>
+                <td>{{ devi.mail }}</td>
+                <td>{{ devi.telephone }}</td>
+                <td>{{ devi.nom }}</td>
+                <td>{{ devi.prenom }}</td>
+                <td>{{ devi.codePostal }}</td>
+                <td>{{ devi.ville }}</td>
+                <td>
+                    <a href="{{ path('devis_admin_show', {'id': devi.id}) }}">show</a>
+                    <a href="{{ path('devis_admin_delete', {'id': devi.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
 {% endblock %}

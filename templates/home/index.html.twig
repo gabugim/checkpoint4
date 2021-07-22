@@ -3,18 +3,22 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <img class="image-top-div-home" src="{{ asset('build/images/tools.jpg') }}" alt="tools"/>
+    <div>
+        <p>Nos métiers et ateliers</p>
+    </div>
 
-    This friendly message is coming fromooooooooooooop:<i class="fas fa-arrow-up"></i>oo
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/gimat/PhpstormProjects/Checkitez/projetmenuisier/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/gimat/PhpstormProjects/Checkitez/projetmenuisier/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container">
+
+        <div class="card bg-dark text-white">
+            <img src="..." class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">Last updated 3 mins ago</p>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

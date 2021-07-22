@@ -7,7 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
-.publi/uploads
+/publi/uploads
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
