@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+        <h1>Category index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>ShortDescription</th>
+                <th>LongDescription</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.shortDescription }}</td>
+                    <td>{{ category.longDescription }}</td>
+                    <td>{{ category.title }}</td>
+                    <td>{{ category.image }}</td>
+                    <td>
+                        <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
+                        <a href="{{ path('category_admin_edit', {'id': category.id}) }}">edit</a>
+                        {{ include('categoryAdmin/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('category_admin_new') }}">Create new</a>
+
+    <h1>Tuto index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>ShortDescription</th>
+            <th>LongDescription</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tuto in tutos %}
+            <tr>
+                <td>{{ tuto.id }}</td>
+                <td>{{ tuto.image }}</td>
+                <td>{{ tuto.title }}</td>
+                <td>{{ tuto.shortDescription }}</td>
+                <td>{{ tuto.longDescription }}</td>
+                <td>
+                    <a href="{{ path('tuto_show', {'id': tuto.id}) }}">show</a>
+                    <a href="{{ path('tuto_admin_edit', {'id': tuto.id}) }}">edit</a>
+                    {{ include('tutoAdmin/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tuto_admin_new') }}">Create new</a>
+<p>ooooo</p>
+    <p>aaaaaaaaaa</p>
+{% endblock %}

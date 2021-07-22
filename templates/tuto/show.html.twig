@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tuto{% endblock %}
+
+{% block body %}
+    <h1>Tuto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tuto.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ tuto.image }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ tuto.title }}</td>
+            </tr>
+            <tr>
+                <th>ShortDescription</th>
+                <td>{{ tuto.shortDescription }}</td>
+            </tr>
+            <tr>
+                <th>LongDescription</th>
+                <td>{{ tuto.longDescription }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tuto_index') }}">back to list</a>
+
+{% endblock %}

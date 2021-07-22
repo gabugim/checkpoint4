@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+    <h1>Category index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>ShortDescription</th>
+                <th>LongDescription</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.shortDescription }}</td>
+                <td>{{ category.longDescription }}</td>
+                <td>{{ category.title }}</td>
+                <td>{{ category.image }}</td>
+                <td>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
