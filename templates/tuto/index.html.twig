@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tuto index{% endblock %}
+
+{% block body %}
+    <h1>Tuto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>ShortDescription</th>
+                <th>LongDescription</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tuto in tutos %}
+            <tr>
+                <td>{{ tuto.id }}</td>
+                <td>{{ tuto.image }}</td>
+                <td>{{ tuto.title }}</td>
+                <td>{{ tuto.shortDescription }}</td>
+                <td>{{ tuto.longDescription }}</td>
+                <td>
+                    <a href="{{ path('tuto_show', {'id': tuto.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
