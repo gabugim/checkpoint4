@@ -3,33 +3,74 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-        <h1>Category index</h1>
 
-        <table class="table">
+        <h1 class="p-5">Interface d'administration</h1>
+            <h2 class="p-3">Index de vos categories</h2>
+
+            <table class="table  table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Numéro</th>
+                    <th>Nom</th>
+                    <th>Déscription courte</th>
+    {#                <th>LongDescription</th>#}
+                    <th>Titre</th>
+    {#                <th>Image</th>#}
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td  >{{ category.shortDescription }}</td>
+    {#                    <td >{{ category.longDescription }}</td>#}
+                        <td>{{ category.title }}</td>
+    {#                    <td>{{ category.image }}</td>#}
+                        <td>
+                            <a class="btn btn-dark m-1" href="{{ path('category_show', {'id': category.id}) }}">y allez</a>
+                        <br>
+                            <a class="btn btn-primary m-1" href="{{ path('category_admin_edit', {'id': category.id}) }}">modifier</a>
+                            {{ include('categoryAdmin/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="btn btn-success m-5" href="{{ path('category_admin_new') }}">Ajouter une categorie</a>
+
+        <h2 class="p-3">Index de vos tutoriels</h2>
+
+        <table class="table  table-striped table-hover">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>ShortDescription</th>
-                <th>LongDescription</th>
+                <th>Numéro</th>
+    {#            <th>Image</th>#}
                 <th>Title</th>
-                <th>Image</th>
+                <th>ShortDescription</th>
+    {#            <th>LongDescription</th>#}
                 <th>actions</th>
             </tr>
             </thead>
             <tbody>
-            {% for category in categories %}
+            {% for tuto in tutos %}
                 <tr>
-                    <td>{{ category.id }}</td>
-                    <td>{{ category.name }}</td>
-                    <td  >{{ category.shortDescription }}</td>
-                    <td >{{ category.longDescription }}</td>
-                    <td>{{ category.title }}</td>
-                    <td>{{ category.image }}</td>
+                    <td>{{ tuto.id }}</td>
+    {#                <td>{{ tuto.image }}</td>#}
+                    <td>{{ tuto.title }}</td>
+                    <td>{{ tuto.shortDescription }}</td>
+    {#                <td>{{ tuto.longDescription }}</td>#}
                     <td>
-                        <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                        <a href="{{ path('category_admin_edit', {'id': category.id}) }}">edit</a>
-                        {{ include('categoryAdmin/_delete_form.html.twig') }}
+                        <a class="btn btn-dark m-1" href="{{ path('tuto_show', {'id': tuto.id}) }}">y allez</a>
+                        <br>
+                        <a class="btn btn-primary m-1" href="{{ path('tuto_admin_edit', {'id': tuto.id}) }}">Modifier</a>
+                        {{ include('tutoAdmin/_delete_form.html.twig') }}
                     </td>
                 </tr>
             {% else %}
@@ -40,90 +81,56 @@
             </tbody>
         </table>
 
-        <a href="{{ path('category_admin_new') }}">Create new</a>
+        <a class="btn btn-success m-5" href="{{ path('tuto_admin_new') }}">Ajouter un nouveau tutoriel</a>
 
-    <h1>Tuto index</h1>
+        <div>
+            <h2 class="p-3">Index de vos devis</h2>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>ShortDescription</th>
-            <th>LongDescription</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for tuto in tutos %}
-            <tr>
-                <td>{{ tuto.id }}</td>
-                <td>{{ tuto.image }}</td>
-                <td>{{ tuto.title }}</td>
-                <td>{{ tuto.shortDescription }}</td>
-                <td>{{ tuto.longDescription }}</td>
-                <td>
-                    <a href="{{ path('tuto_show', {'id': tuto.id}) }}">show</a>
-                    <a href="{{ path('tuto_admin_edit', {'id': tuto.id}) }}">edit</a>
-                    {{ include('tutoAdmin/_delete_form.html.twig') }}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('tuto_admin_new') }}">Create new</a>
-
-    <h1>Devis index</h1>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>TypeDeBien</th>
-            <th>Budget</th>
-            <th>Surface</th>
-            <th>Description</th>
-            <th>Mail</th>
-            <th>Telephone</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>CodePostal</th>
-            <th>Ville</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for devi in devis %}
-            <tr>
-                <td>{{ devi.id }}</td>
-                <td>{{ devi.typeDeBien }}</td>
-                <td>{{ devi.budget }}</td>
-                <td>{{ devi.surface }}</td>
-                <td>{{ devi.description }}</td>
-                <td>{{ devi.mail }}</td>
-                <td>{{ devi.telephone }}</td>
-                <td>{{ devi.nom }}</td>
-                <td>{{ devi.prenom }}</td>
-                <td>{{ devi.codePostal }}</td>
-                <td>{{ devi.ville }}</td>
-                <td>
-                    <a href="{{ path('devis_admin_show', {'id': devi.id}) }}">show</a>
-                    <a href="{{ path('devis_admin_delete', {'id': devi.id}) }}">delete</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table  table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Numéro</th>
+                    <th>TypeDeBien</th>
+                    <th>Budget</th>
+{#                    <th>Surface</th>#}
+{#                    <th>Description</th>#}
+                    <th>Mail</th>
+                    <th>Telephone</th>
+                    <th>Nom</th>
+{#                    <th>Prénom</th>#}
+{#                    <th>CodePostal</th>#}
+                    <th>Ville</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for devi in devis %}
+                    <tr>
+                        <td>{{ devi.id }}</td>
+                        <td>{{ devi.typeDeBien }}</td>
+                        <td>{{ devi.budget }}</td>
+{#                        <td>{{ devi.surface }}</td>#}
+{#                        <td>{{ devi.description }}</td>#}
+                        <td>{{ devi.mail }}</td>
+                        <td>{{ devi.telephone }}</td>
+                        <td>{{ devi.nom }}</td>
+{#                        <td>{{ devi.prenom }}</td>#}
+{#                        <td>{{ devi.codePostal }}</td>#}
+                        <td>{{ devi.ville }}</td>
+                        <td>
+                            <a class="btn btn-dark m-1" href="{{ path('devis_admin_show', {'id': devi.id}) }}">y allez</a>
+                            <br>
+                            <a class="btn btn-danger m-1" href="{{ path('devis_admin_delete', {'id': devi.id}) }}">supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="12">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 
 {% endblock %}

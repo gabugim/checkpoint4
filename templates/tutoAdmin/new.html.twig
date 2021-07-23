@@ -3,9 +3,11 @@
 {% block title %}New Tuto{% endblock %}
 
 {% block body %}
-    <h1>Create new Tuto</h1>
+    <div class="container">
+    <h1 class="m-1 p-5">Créer un nouveau tutoriel</h1>
 
     {{ include('tutoAdmin/_form.html.twig') }}
 
-    <a href="{{ path('tuto_index') }}">back to list</a>
+    <a class="btn btn-dark m-5" href="{{ path('admin') }}">Intereface administrateur</a>
+    </div>
 {% endblock %}

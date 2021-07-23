@@ -3,22 +3,50 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-
-    <img class="image-top-div-home" src="{{ asset('build/images/tools.jpg') }}" alt="tools"/>
+    <img class="image-top-div-home" src="{{ asset('build/image/tools3.jpg') }}" alt="tools"/>
     <div>
-        <p>Nos métiers et ateliers</p>
+        <h1 class="text-center p-5"><strong>Nos métiers et ateliers</strong></h1>
     </div>
 
     <div class="container">
-
-        <div class="card bg-dark text-white">
-            <img src="..." class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text">Last updated 3 mins ago</p>
+        <div class="d-flex flex-wrap justify-content-center">
+        <div class="card bg-dark text-white col-md-5 p-2 m-2 shadow" >
+            <img src="{{ asset('build/image/tools.jpg') }}" class="card-img" alt="outils">
+           <a href="{{ path("home") }}">
+               <div class="d-flex align-items-center text-center justify-content-center text-light text-center card-img-overlay">
+                <h5 class="card-title">Atelier</h5>
+            </div>
+           </a>
+        </div>
+{% for category in categories %}
+        <div class="card bg-dark text-white col-md-5 p-2 m-2 shadow">
+            <img src="{{ asset('uploads/tuto/' ~  category.image ) }}" class="card-img" alt="categorie">
+            <a href="{{ path('category_show', {'id': category.id}) }}"><div class="d-flex align-items-center text-center justify-content-center text-light card-img-overlay">
+                <h5 class="card-title">{{ category.name }}</h5>
+{#                <p class="card-text">{{ category.shortDescription }}</p>#}
+            </div>
+            </a>
+        </div>
+ {% endfor%}
+        </div>
+        <div class="d-flex my-5">
+            <img class=" rounded-2 col-md-6" src="{{ asset('build/image/flo.jpg') }}" alt="le charpentier"/>
+            <div>
+                <h4 class="text-center ">Petite présentation</h4>
+                <p class="p-3">Benjamin Walter est né de parents juifs le 15 Juillet 1892 à Berlin. Il restera dans la capitale allemande jusqu'à l'âge de huit ans puis de 1904 à 1907, pour des raisons de santé, part séjourner à la campagne. Il se lie alors d'amitié avec Gustav Wyneken à l'origine de son incorporation dans les Jugendbewegung, « le mouvement de jeunesse allemande ». Ce courant prône le retour à la nature plutôt que les effets de l'industrialisation du XIXe siècle sur l'environnement. De 1910 à 1914, il publie alors des essais dans la publication de ce mouvement, intitulé« Der Anfang »En 1912, après l'obtention du baccalauréat, Walter Benjamin étudie la philosophie, la philologie allemande et l'histoire de l'art à l'Université « Albert-Ludwigs » de Fribourg-en-Brisgau. A Berlin et à Munich, sa thèse sur le romantisme allemand n'est pas validée. En 1923, il tente à nouveau d'obtenir son habilitation pour pouvoir enseigner mais ce sera à nouveau un échec.</p>
+            </div>
+        </div>
+        <div class="d-flex my-5">
+            <div class="col-md-6">
+                <p> voici mon 06</p>
+                <p> mon mail</p>
+                <p> tout ça quoi </p>
+            </div>
+            <div  class="col-md-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89095.73243154924!2d-0.7147530935596512!3d45.74630144794892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4800fd57d4b7b655%3A0x54efc7861c70ff14!2s17100%20Saintes!5e0!3m2!1sfr!2sfr!4v1627047985575!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
+
 
 {% endblock %}

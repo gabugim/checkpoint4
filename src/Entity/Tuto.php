@@ -7,7 +7,7 @@ use App\Repository\TutoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 /**
  * @ORM\Entity(repositoryClass=TutoRepository::class)
  * @Vich\Uploadable
@@ -29,7 +29,7 @@ class Tuto
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="images")
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="image")
      *
      * @var ?File
      */
@@ -172,9 +172,9 @@ class Tuto
 //    /**
 //     * @param File $posterFile
 //     */
-//    public function setPosterFile(File $images = null): Tuto
+//    public function setPosterFile(File $image = null): Tuto
 //    {
-//        $this->posterFile = $images;
+//        $this->posterFile = $image;
 //        return $this;
 //    }
 

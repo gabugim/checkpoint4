@@ -3,39 +3,35 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+    <img class="image-top-div-home" src="{{ asset('uploads/tuto/' ~  category.image ) }}" alt="tools"/>
+<div class="container">
+    <h1 class="p-5">{{ category.name }}</h1>
+    <p><strong>{{ category.shortDescription }}</strong></p>
+    <h2 class="p-5">{{ category.title }}</h2>
+    <p>{{ category.longDescription }}</p>
+    <a class="m-5 btn btn-success" href="{{ path('devis_new') }}">Vous souhaitez faire un devis?</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>ShortDescription</th>
-                <td>{{ category.shortDescription }}</td>
-            </tr>
-            <tr>
-                <th>LongDescription</th>
-                <td>{{ category.longDescription }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ category.title }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ category.image }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('devis_new') }}">Vous souhaitez faire un devis?</a>
-
-    <a href="{{ path('category_index') }}">back to list</a>
+    <div class="d-flex justify-content-between flex-wrap">
+        {% for categoryTuto in category.tutos %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ asset('uploads/tuto/' ~ categoryTuto.image) }}" class="card-img-top" alt="tuto image">
+                <div class="card-body">
+                    <h5>{{ categoryTuto.title }}</h5>
+                    <p class="card-text p-2">{{ categoryTuto.shortDescription }}</p>
+                    <a href="{{ path('tuto_show', {'id': categoryTuto.id}) }}" class="m-1 position-absolute bottom-0 start-0 btn btn-success">En savoir plus</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+    <a class='m-5 btn btn-dark' href="{{ path('home') }}">Revenir sur la home page</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class='m-5 btn btn-dark' href="{{ path('admin') }}">back to admin</a>
+  <a class='m-5 btn btn-dark' href="{{ path('category_admin_edit', {'id': category.id}) }}">edit</a>
+<div class="m-5">
+   {{ include('categoryAdmin/_delete_form.html.twig') }}
+</div>
+    {% endif %}
 
 
-{#    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>#}
-
-{#    {{ include('category/_delete_form.html.twig') }}#}
 {% endblock %}

@@ -14,7 +14,6 @@ class TutoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('images')
             ->add('imageFile', VichFileType::class, [
                 'required'      => false,
                 'data_class' => null,
