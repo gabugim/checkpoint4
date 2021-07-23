@@ -3,9 +3,10 @@
 {% block title %}New Devis{% endblock %}
 
 {% block body %}
-    <h1>Create new Devis</h1>
+    <div class="container">
+        <h1>Faite votre devis</h1>
 
-    {{ include('devis/_form.html.twig') }}
-{{ dump() }}
-    <a href="{{ path('home') }}">back to list</a>
+        {{ include('devis/_form.html.twig') }}
+        <a class="btn-dark btn m-5" href="{{ path('home') }}">menu principal</a>
+    </div>
 {% endblock %}

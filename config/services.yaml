@@ -7,6 +7,9 @@ parameters:
     upload_directory: '/uploads/tuto'
 
 services:
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        tags: [ serializer.normalizer ]
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

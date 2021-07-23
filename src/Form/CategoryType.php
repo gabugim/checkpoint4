@@ -6,16 +6,23 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('imageFile', VichFileType::class, [
+                'required'      => false,
+                'data_class' => null,
+                'empty_data' => '',
+                'allow_delete'  => false, // not mandatory, default is true
+                'download_uri' => false, // not mandatory, default is true
+            ])
             ->add('shortDescription')
             ->add('longDescription')
             ->add('title')
-            ->add('images')
             ->add('name')
         ;
     }

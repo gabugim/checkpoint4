@@ -3,33 +3,22 @@
 {% block title %}Tuto{% endblock %}
 
 {% block body %}
-    <h1>Tuto</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tuto.id }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ tuto.image }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ tuto.title }}</td>
-            </tr>
-            <tr>
-                <th>ShortDescription</th>
-                <td>{{ tuto.shortDescription }}</td>
-            </tr>
-            <tr>
-                <th>LongDescription</th>
-                <td>{{ tuto.longDescription }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <img class="image-top-div-home" src="{{ asset('uploads/tuto/' ~  tuto.image ) }}" alt="tools"/>
 
-    <a href="{{ path('tuto_index') }}">back to list</a>
+<div class="container">
+    <h2 class="p-5">{{ tuto.category.name }}</h2>
+    <p><strong>{{ tuto.shortDescription }}</strong></p>
+    <h1 class="p-5">{{ tuto.title }}</h1>
+    <p>{{ tuto.longDescription }}</p>
+</div>
+    <a href="{{ path('category_show', {'id': tuto.category.id}) }}" class="m-5 btn btn-dark">revenir a {{ tuto.category.name }}</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin') }}" class="m-5 btn btn-dark">interface d'administration</a>
+        <a class='m-5 btn btn-dark' href="{{ path('tuto_admin_edit', {'id': tuto.id}) }}">edit</a>
+        <div class="m-5">
+            {{ include('tutoAdmin/_delete_form.html.twig') }}
+        </div>
+    {% endif %}
 
 {% endblock %}
